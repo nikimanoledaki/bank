@@ -1,12 +1,12 @@
 class Account
   attr_reader :balance
 
-  def initialize
-    @balance = 0.00
+  def initialize(balance = 0)
+    @balance = balance
   end
   
-  def showBalance
-    '%.2f' % @balance
+  def show_balance
+    "%.2f" % @balance
   end
 
   def deposit(value)
@@ -14,7 +14,12 @@ class Account
     @balance += value
   end
 
-  def not_number(value)
-    value.is_a?(Float) == false
+  def withdrawal(value)
+    @balance -= value
   end
+
+  def not_number(value)
+    value.is_a?(Numeric) == false 
+  end
+   
 end
