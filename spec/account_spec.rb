@@ -18,6 +18,10 @@ describe Account do
       expect{ subject.deposit 1.00 }.to change{ subject.balance }.by 1.00
     end
 
+    it 'raises an error if the value is not a float' do
+      expect{ subject.deposit "one" }.to raise_error "Error: Value must be a number"
+    end
+
   end
 
 end
