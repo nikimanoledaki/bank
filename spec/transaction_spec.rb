@@ -2,11 +2,15 @@ require 'transaction'
 
 describe Transaction do
 
-  subject { Transaction.new(1000) }
+  subject { Transaction.new(value: 1000, balance: 0) }
 
   describe '#initialization' do
     it 'initializes with a sum value' do
       expect(subject.value).to eq 1000
+    end
+
+    it 'initializes with the balance before the transaction happens' do
+      expect(subject.balance).to eq 0
     end
   end
 

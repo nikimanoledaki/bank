@@ -13,7 +13,6 @@ describe Account do
   end
 
   describe '#deposit' do
-
     it 'increases the account\'s balance by the value passsed as an argument' do
       expect{ subject.deposit 1.00 }.to change{ subject.balance }.by 1.00
     end
@@ -29,7 +28,7 @@ describe Account do
   end
 
   describe '#withdrawal' do
-  before(:each) { subject.deposit(10) }
+    before(:each) { subject.deposit(10) }
 
     it 'descreases the account\'s balance by the value passsed as an argument' do
       expect{ subject.withdrawal 1.00 }.to change{ subject.balance }.by -1.00
