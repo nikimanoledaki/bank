@@ -10,10 +10,10 @@ describe Transaction do
     end
   end
 
-  # describe '#date' do
-  #   it 'shows the date of the transaction' do
-  #     expect(subject.date).to eq "14/01/2012"
-  #   end
-  # end
+  describe '#date' do
+    it 'shows the date of the transaction' do
+      expect(subject.date).to eq Time.now.strftime("%d/%m/%Y")
+    end
+  end
   
 end
