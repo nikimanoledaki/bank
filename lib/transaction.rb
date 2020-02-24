@@ -1,7 +1,8 @@
 class Transaction
+  
   attr_reader :value
 
-  def initialize(value:)
+  def initialize(value)
     @value = value
     @date = date
   end

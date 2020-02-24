@@ -2,7 +2,7 @@ require 'transaction'
 
 describe Transaction do
 
-  subject { Transaction.new(value: 1000) }
+  subject { Transaction.new(1000) }
 
   describe '#initialization' do
     it 'initializes with a sum value' do
