@@ -15,6 +15,7 @@ class Account
   end
 
   def withdrawal(value)
+    fail "Error: Value must be a number" if not_number(value)
     @balance -= value
   end
 

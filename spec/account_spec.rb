@@ -30,6 +30,15 @@ describe Account do
     it 'descreases the account\'s balance by the value passsed as an argument' do
       expect{ subject.withdrawal 1.00 }.to change{ subject.balance }.by -1.00
     end
+
+    it 'accepts values that are integers' do
+      subject.withdrawal(1)
+      expect(subject.show_balance).to eq "-1.00"
+    end
+
+    it 'raises an error if the value is not a numeric value' do
+      expect{ subject.withdrawal "one" }.to raise_error "Error: Value must be a number"
+    end
   end
 
 end
