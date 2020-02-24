@@ -44,11 +44,13 @@ $ bundle install
 ```
 
 ## How to use
+Invoke IRB and the main file at the same time with the following command:
 ```
-$ irb
+$ irb -r ./lib/account.rb
 ```
 
 ## How to test
+Rub the rspec tests:
 ```
 $ rspec
 ```
