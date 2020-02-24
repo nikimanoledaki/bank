@@ -16,6 +16,10 @@ It was written by following a strict Test-Driven Development process where each 
 ## User Stories
 ```
 As a user,
+So that I can see how much money I have in my account
+I want to see my balance
+
+As a user,
 So that I can add money to my account
 I want to make a deposit of 1000
 
@@ -24,20 +28,12 @@ So that I can purchase something
 I want to make a withdrawal of 1000 
 
 As a user,
-So that I can keep track of my expenditures
-I want to be able to print an account statement
-
-As a user,
-So that I can see how much I own
-I want to see my balance
+So that I can keep track of my debit and credit transactions
+I want to print an account statement
 
 As a user, 
 so that I can see when I deposited or withdrew money
-I want to see the date as 14/01/2012
-
-As a user,
-So that I can keep track of my account
-I want to see the amount in my credit and debit accounts separately
+I want my account statement to show transaction dates as 14/01/2012
 ```
 
 ## Getting started
