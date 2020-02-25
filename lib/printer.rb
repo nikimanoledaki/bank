@@ -4,7 +4,7 @@ class Printer
   attr_reader :array
 
   def initialize
-    @array = ["date || credit || debit || balance"]
+    @array = ['date || credit || debit || balance']
   end
 
   def statement(log)
@@ -14,11 +14,11 @@ class Printer
 
   def format(log)
     log.map do |t|
-      if t[:type] == "deposit"
-        t = "#{t[:date]} || #{number(t[:value])} || || #{number(t[:balance])}"
-      else
-        t = "#{t[:date]} || || #{number(t[:value])} || #{number(t[:balance])}"
-      end
+      t = if t[:type] == 'deposit'
+            "#{t[:date]} || #{number(t[:value])} || || #{number(t[:balance])}"
+          else
+            "#{t[:date]} || || #{number(t[:value])} || #{number(t[:balance])}"
+          end
       @array << t
     end
   end

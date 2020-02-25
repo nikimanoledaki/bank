@@ -1,4 +1,5 @@
 # Bank App
+[![Maintainability](https://api.codeclimate.com/v1/badges/1cdf45b157d192f356f6/maintainability)](https://codeclimate.com/github/nikimanoledaki/bank/maintainability)
 
 ## Description
 
@@ -8,10 +9,16 @@ The purpose of this exercise is to practice doing technical tests independently 
 
 See [here](#specification) for the client's specification, and [here](#user-stories) for my interpretation of these specfications as user stories. 
 
-## Technologies & Design Principles
-This simple bank application has been built with Ruby. 
+## Technologies
+This simple bank application is written in Ruby with a strict Test-Driven Development process where each new step incremented the code's complexity. RSpec was used to run the tests.
 
-It was written by following a strict Test-Driven Development process where each new step incremented the code's complexity. RSpec was used to run the tests.
+## Design
+
+This program has four classes: Account, Transaction, Log, Printer.
+
+* Methods
+  
+* In terms of tests, the Account unit tests have mocks for the Transaction class, but they lack mocks for the Log and Printer classes. More mocks would be added with time.
 
 ## User Stories
 ```
@@ -46,14 +53,42 @@ $ bundle install
 ## How to use
 Invoke IRB and the main file at the same time with the following command:
 ```
-$ irb -r ./lib/account.rb
+$ irb -r ./lib/account.rb 
+> account = Account.new
+> account.deposit(1000)
+> account.deposit(20000)
+> account.withdrawal(500)
+> account.statement
+date || credit || debit || balance
+25/02/2020 || 1000.00 || || 2000.00
+25/02/2020 || 2000.00 || || 5000.00
+25/02/2020 || || 500.00 || 2000.00
 ```
 
 ## How to test
-Rub the rspec tests:
+
+### Run feature tests
+See [how to use](#how-to-use) to run a manual feature test. 
+
+You can also feature test edge cases, such as: 
+
+- If the client inputs a value that is not a numeral.
+```
+> RuntimeError (Insufficient credit)
+```
+
+- If the client tries to make a debit transaction but there is insufficient credit in their account balance.
+```
+> RuntimeError (Must be a number)
+```
+
+### Run unit test
+Run the rspec tests:
 ```
 $ rspec
 ```
+
+The current coverage is 100%.
 
 ## Specification
 
