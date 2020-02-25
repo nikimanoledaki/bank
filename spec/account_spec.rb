@@ -3,10 +3,12 @@
 require 'account'
 
 describe Account do
-  describe '#show_balance' do
-    it 'prints integer values as floats with two decimals' do
+  describe '#statement' do
+    it 'prints formatted transaction history' do
       subject.deposit(1)
-      expect(subject.show_balance).to eq '1.00'
+      expect do
+        subject.statement
+      end.to output("date || credit || debit || balance\n25/02/2020 || 1.00 || || 2.00\n").to_stdout
     end
   end
 
@@ -22,10 +24,6 @@ describe Account do
     it 'raises error when withdrawing with insufficient balance' do
       expect { subject.withdrawal 11.00 }.to raise_error 'Insufficient credit'
     end
-
-    it 'decreases account\'s balance by the value passsed as argument' do
-      expect { subject.withdrawal 1.00 }.to change { subject.balance }.by(-1.00)
-    end
   end
 
   describe '#transaction' do
@@ -33,8 +31,9 @@ describe Account do
       transaction = instance_double('Transaction')
       expect(transaction).to receive(:add_details).with(1, 0, 'deposit')
       expect(transaction).to receive(:calculate_balance).and_return(1)
+      expect(transaction).to receive(:show_details).and_return('details')
       subject.transaction(1, 'deposit', transaction)
-      expect(subject.show_balance).to eq '1.00'
+      expect(subject.balance).to eq 1
     end
   end
 end

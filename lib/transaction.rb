@@ -17,10 +17,6 @@ class Transaction
     @type = type
   end
 
-  def show_details
-    details = {date: date, type: type, value: @value, balance: calculate_balance}
-  end
-
   def date
     Time.now.strftime('%d/%m/%Y')
   end
@@ -31,5 +27,9 @@ class Transaction
     else
       @balance -= @value
     end
+  end
+
+  def show_details
+    { date: date, type: type, value: @value, balance: calculate_balance }
   end
 end

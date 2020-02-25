@@ -10,13 +10,10 @@ describe Log do
   end
 
   describe '#add_transaction' do
-    it 'adds a transaction to a history array' do
-      transaction = Transaction.new
-      value = 1.00
-      balance = 0.00
-      type = 'deposit'
-      transaction.add_details(value, balance, type)
-      subject.add_transaction(transaction.show_details)
+    it 'mocks transaction being added to history' do
+      transaction = instance_double('Transaction')
+      expect(transaction).to receive(:show_details).and_return('details')
+      subject.add(transaction.show_details)
       expect(subject.show_history[0]).not_to be_empty
     end
   end

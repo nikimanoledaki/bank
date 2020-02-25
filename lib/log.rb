@@ -9,12 +9,11 @@ class Log
     @history = []
   end
 
-  def add_transaction(transaction)
-    @history.append(transaction)
+  def add(transaction_details)
+    @history.append(transaction_details)
   end
 
   def show_history
     @history
   end
-
 end
