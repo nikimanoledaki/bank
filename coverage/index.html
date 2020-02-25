@@ -14,7 +14,7 @@
       <img src="./assets/0.12.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-02-25T12:05:06+00:00">2020-02-25T12:05:06+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-02-25T12:25:08+00:00">2020-02-25T12:25:08+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.98
+         3.04
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>80</b> relevant lines,
-    <span class="green"><b>80</b> lines covered</span> and
+    <b>82</b> relevant lines,
+    <span class="green"><b>82</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -73,11 +73,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#03edc4dbf0f1221a809f93eb32e82e30c45911b5" class="src_link" title="lib/account.rb">lib/account.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">44</td>
-            <td class="cell--number">23</td>
-            <td class="cell--number">23</td>
+            <td class="cell--number">47</td>
+            <td class="cell--number">25</td>
+            <td class="cell--number">25</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">3.74</td>
+            <td class="cell--number">3.88</td>
             
           </tr>
         
@@ -95,7 +95,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#007e1a35d0e639b3f0b416c0565d43f4af1f0f1e" class="src_link" title="spec/account_spec.rb">spec/account_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">55</td>
+            <td class="cell--number">54</td>
             <td class="cell--number">24</td>
             <td class="cell--number">24</td>
             <td class="cell--number">0</td>
@@ -145,8 +145,8 @@
     
 
     <div class="t-line-summary">
-      <b>23</b> relevant lines.
-      <span class="green"><b>23</b> lines covered</span> and
+      <b>25</b> relevant lines.
+      <span class="green"><b>25</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -307,7 +307,7 @@
 
             
 
-            <code class="ruby">    format(&#39;%.2f&#39;, @balance)</code>
+            <code class="ruby">    format(&#39;%&lt;balance&gt;.2f&#39;, balance: @balance)</code>
           </li>
         </div>
       
@@ -439,29 +439,29 @@
 
             
 
-            <code class="ruby">    raise &#39;Error: Value must be a number&#39; if not_number(value)</code>
+            <code class="ruby">    transaction_conditions(value, type)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="27">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="7" data-linenumber="27">
+            <span class="hits">7</span>
             
 
             
 
-            <code class="ruby">    if type == &#39;withdrawal&#39; &amp;&amp; exceeds_balance?(value)</code>
+            <code class="ruby">    new_transaction = @transaction.new(value, @balance, type)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="28">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="7" data-linenumber="28">
+            <span class="hits">7</span>
             
 
             
 
-            <code class="ruby">      raise &#39;Error: Not enough credit&#39;</code>
+            <code class="ruby">    @balance = new_transaction.calculate_balance</code>
           </li>
         </div>
       
@@ -472,7 +472,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -488,35 +488,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="31">
-            <span class="hits">7</span>
+          <li class="covered" data-hits="1" data-linenumber="31">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    new_transaction = @transaction.new(value, @balance, type)</code>
+            <code class="ruby">  def transaction_conditions(value, type)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="32">
-            <span class="hits">7</span>
+          <li class="covered" data-hits="10" data-linenumber="32">
+            <span class="hits">10</span>
             
 
             
 
-            <code class="ruby">    @balance = new_transaction.calculate_balance</code>
+            <code class="ruby">    raise &#39;Must be a number&#39; if not_number(value)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
-            
-            
-
+          <li class="covered" data-hits="8" data-linenumber="33">
+            <span class="hits">8</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    return unless type == &#39;withdrawal&#39; &amp;&amp; exceeds_balance?(value)</code>
           </li>
         </div>
       
@@ -538,7 +538,7 @@
 
             
 
-            <code class="ruby">  private</code>
+            <code class="ruby">    raise &#39;Not enough credit&#39;</code>
           </li>
         </div>
       
@@ -549,29 +549,29 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="37">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="37">
+          <li class="covered" data-hits="1" data-linenumber="38">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def not_number(value)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="10" data-linenumber="38">
-            <span class="hits">10</span>
-            
-
-            
-
-            <code class="ruby">    value.is_a?(Numeric) == false</code>
+            <code class="ruby">  private</code>
           </li>
         </div>
       
@@ -582,40 +582,40 @@
 
             
 
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="40">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="41">
+          <li class="covered" data-hits="1" data-linenumber="40">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def exceeds_balance?(value)</code>
+            <code class="ruby">  def not_number(value)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="42">
-            <span class="hits">3</span>
+          <li class="covered" data-hits="10" data-linenumber="41">
+            <span class="hits">10</span>
             
 
             
 
-            <code class="ruby">    (@balance - value) &lt;= 0</code>
+            <code class="ruby">    value.is_a?(Numeric) == false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="42">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -626,12 +626,45 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def exceeds_balance?(value)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="45">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">    (@balance - value) &lt;= 0</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="46">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="44">
+          <li class="never" data-hits="" data-linenumber="47">
             
             
 
@@ -1293,7 +1326,7 @@
 
             
 
-            <code class="ruby">      expect { subject.deposit &#39;one&#39; }.to raise_error &#39;Error: Value must be a number&#39;</code>
+            <code class="ruby">      expect { subject.deposit &#39;one&#39; }.to raise_error &#39;Must be a number&#39;</code>
           </li>
         </div>
       
@@ -1381,7 +1414,7 @@
 
             
 
-            <code class="ruby">      expect { subject.withdrawal &#39;one&#39; }.to raise_error &#39;Error: Value must be a number&#39;</code>
+            <code class="ruby">      expect { subject.withdrawal &#39;one&#39; }.to raise_error &#39;Must be a number&#39;</code>
           </li>
         </div>
       
@@ -1425,7 +1458,7 @@
 
             
 
-            <code class="ruby">      expect { subject.withdrawal 11.00 }.to raise_error &#39;Error: Not enough credit&#39;</code>
+            <code class="ruby">      expect { subject.withdrawal 11.00 }.to raise_error &#39;Not enough credit&#39;</code>
           </li>
         </div>
       
@@ -1458,7 +1491,7 @@
 
             
 
-            <code class="ruby">    it &#39;descreases the account\&#39;s balance by the value passsed as an argument&#39; do</code>
+            <code class="ruby">    it &#39;descreases account\&#39;s balance by the value passsed as argument&#39; do</code>
           </li>
         </div>
       
@@ -1469,7 +1502,7 @@
 
             
 
-            <code class="ruby">      expect { subject.withdrawal 1.00 }.to change { subject.balance }.by -1.00</code>
+            <code class="ruby">      expect { subject.withdrawal 1.00 }.to change { subject.balance }.by(-1.00)</code>
           </li>
         </div>
       
@@ -1552,17 +1585,6 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="54">
-            
-            
-
-            
-
-            <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="55">
             
             
 
@@ -1841,7 +1863,7 @@
 
             
 
-            <code class="ruby">    it &#39;initializes with an indication of whether it\&#39;s a deposit or withdrawal&#39; do</code>
+            <code class="ruby">    it &#39;initializes with type - either deposit or withdrawal&#39; do</code>
           </li>
         </div>
       

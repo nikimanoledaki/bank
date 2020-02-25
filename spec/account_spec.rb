@@ -27,7 +27,7 @@ describe Account do
     end
 
     it 'raises an error if the value is not a numeric value' do
-      expect { subject.deposit 'one' }.to raise_error 'Error: Value must be a number'
+      expect { subject.deposit 'one' }.to raise_error 'Must be a number'
     end
   end
 
@@ -35,15 +35,15 @@ describe Account do
     before(:each) { subject.deposit(10) }
 
     it 'raises an error if the value is not a numeric value' do
-      expect { subject.withdrawal 'one' }.to raise_error 'Error: Value must be a number'
+      expect { subject.withdrawal 'one' }.to raise_error 'Must be a number'
     end
 
     it 'raises an error when withdrawing with a balance less or equal to one' do
-      expect { subject.withdrawal 11.00 }.to raise_error 'Error: Not enough credit'
+      expect { subject.withdrawal 11.00 }.to raise_error 'Not enough credit'
     end
 
-    it 'descreases the account\'s balance by the value passsed as an argument' do
-      expect { subject.withdrawal 1.00 }.to change { subject.balance }.by -1.00
+    it 'descreases account\'s balance by the value passsed as argument' do
+      expect { subject.withdrawal 1.00 }.to change { subject.balance }.by(-1.00)
     end
 
     it 'accepts values that are integers' do
@@ -51,5 +51,4 @@ describe Account do
       expect(subject.show_balance).to eq '9.00'
     end
   end
-  
 end

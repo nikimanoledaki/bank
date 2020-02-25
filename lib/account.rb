@@ -11,7 +11,7 @@ class Account
   end
 
   def show_balance
-    format('%.2f', @balance)
+    format('%<balance>.2f', balance: @balance)
   end
 
   def deposit(value)
@@ -23,13 +23,16 @@ class Account
   end
 
   def transaction(value, type)
-    raise 'Error: Value must be a number' if not_number(value)
-    if type == 'withdrawal' && exceeds_balance?(value)
-      raise 'Error: Not enough credit'
-    end
-
+    transaction_conditions(value, type)
     new_transaction = @transaction.new(value, @balance, type)
     @balance = new_transaction.calculate_balance
+  end
+
+  def transaction_conditions(value, type)
+    raise 'Must be a number' if not_number(value)
+    return unless type == 'withdrawal' && exceeds_balance?(value)
+
+    raise 'Not enough credit'
   end
 
   private

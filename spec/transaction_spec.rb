@@ -19,7 +19,7 @@ describe Transaction do
       expect(subject.balance).to eq 0
     end
 
-    it 'initializes with an indication of whether it\'s a deposit or withdrawal' do
+    it 'initializes with type - either deposit or withdrawal' do
       expect(subject.type).to eq 'deposit'
     end
   end
