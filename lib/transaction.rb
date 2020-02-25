@@ -1,8 +1,9 @@
-class Transaction
+# frozen_string_literal: true
 
+class Transaction
   attr_reader :value, :balance, :type
 
-  def initialize(value:, balance:, type:)
+  def initialize(value, balance, type)
     @value = value
     @balance = balance
     @type = type
@@ -10,15 +11,14 @@ class Transaction
   end
 
   def date
-    Time.now.strftime("%d/%m/%Y")
+    Time.now.strftime('%d/%m/%Y')
   end
 
   def calculate_balance
-    if value.negative?
-      @balance -= value
+    if @type == 'deposit'
+      @balance += @value
     else
-      @balance += value
+      @balance -= @value
     end
   end
-
 end
