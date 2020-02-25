@@ -14,14 +14,14 @@ class Account
 
   def deposit(value)
     fail "Error: Value must be a number" if not_number(value)
-    @transaction.new(value: value, balance: @balance)
+    @transaction.new(value: value, balance: @balance, type: "deposit")
     @balance += value
   end
 
   def withdrawal(value)
     fail "Error: Value must be a number" if not_number(value)
     fail "Error: Not enough credit" if exceeds_balance?(value)
-    @transaction.new(value: value, balance: @balance)
+    @transaction.new(value: value, balance: @balance, type: "withdrawal")
     @balance -= value
   end
 
