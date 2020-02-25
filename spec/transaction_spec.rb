@@ -5,10 +5,7 @@ require 'transaction'
 describe Transaction do
   describe '#add_details' do
     it 'adds details of transaction' do
-      value = 1.00
-      balance = 0.00
-      type = 'deposit'
-      subject.add_details(value, balance, type)
+      subject.add_details(1.00, 0.00, 'deposit')
       expect(subject.show_details).to be_a(Hash)
     end
   end
@@ -20,11 +17,13 @@ describe Transaction do
   end
 
   describe '#calculate_balance' do
-    it 'calculates balance after transaction occurs' do
-      value = 1.00
-      balance = 0.00
-      type = 'deposit'
-      subject.add_details(value, balance, type)
+    it 'calculates balance after deposit occurs' do
+      subject.add_details(1.00, 0.00, 'deposit')
+      expect(subject.calculate_balance).to eq 1.00
+    end
+
+    it 'calculates balance after withdrawal occurs' do
+      subject.add_details(1.00, 2.00, 'withdrawal')
       expect(subject.calculate_balance).to eq 1.00
     end
   end

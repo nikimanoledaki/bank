@@ -17,7 +17,7 @@ class Printer
       if t[:type] == "deposit"
         t = "#{t[:date]} || #{number(t[:value])} || || #{number(t[:balance])}"
       else
-        t = "#{t[:date]} || || #{t[:value]} || #{t[:balance]}"
+        t = "#{t[:date]} || || #{number(t[:value])} || #{number(t[:balance])}"
       end
       @array << t
     end
