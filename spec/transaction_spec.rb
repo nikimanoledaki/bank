@@ -36,3 +36,5 @@ describe Transaction do
     end
   end
 end
+
+# add transaction to log

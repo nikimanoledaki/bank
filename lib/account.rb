@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 require_relative 'transaction'
+require_relative 'printer'
 
 class Account
   attr_reader :balance
 
-  def initialize(balance = 0, transaction = Transaction)
+  def initialize(balance = 0, transaction = Transaction, printer = Printer)
     @balance = balance
     @transaction = transaction
+    @history = []
+    @printer = printer
   end
 
   def show_balance

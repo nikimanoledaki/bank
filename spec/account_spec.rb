@@ -42,7 +42,7 @@ describe Account do
       expect { subject.withdrawal 11.00 }.to raise_error 'Not enough credit'
     end
 
-    it 'descreases account\'s balance by the value passsed as argument' do
+    it 'decreases account\'s balance by the value passsed as argument' do
       expect { subject.withdrawal 1.00 }.to change { subject.balance }.by(-1.00)
     end
 
