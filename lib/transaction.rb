@@ -1,13 +1,24 @@
 # frozen_string_literal: true
 
+require_relative 'account'
+
 class Transaction
   attr_reader :value, :balance, :type
 
-  def initialize(value, balance, type)
+  def initialize
     @value = value
     @balance = balance
     @type = type
-    @date = date
+  end
+
+  def add_details(value, balance, type)
+    @value = value
+    @balance = balance
+    @type = type
+  end
+
+  def show_details
+    details = {date: date, type: type, value: @value, balance: calculate_balance}
   end
 
   def date

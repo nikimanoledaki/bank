@@ -3,24 +3,13 @@
 require 'transaction'
 
 describe Transaction do
-  let(:subject) do
-    value = 1.00
-    deposit = 0.00
-    type = 'deposit'
-    Transaction.new(value, deposit, type)
-  end
-
-  describe '#initialization' do
-    it 'initializes with a sum value' do
-      expect(subject.value).to eq 1.00
-    end
-
-    it 'initializes with the balance before the transaction happens' do
-      expect(subject.balance).to eq 0
-    end
-
-    it 'initializes with type - either deposit or withdrawal' do
-      expect(subject.type).to eq 'deposit'
+  describe '#add_details' do
+    it 'adds details of transaction' do
+      value = 1.00
+      balance = 0.00
+      type = 'deposit'
+      subject.add_details(value, balance, type)
+      expect(subject.show_details).to be_a(Hash)
     end
   end
 
@@ -32,9 +21,11 @@ describe Transaction do
 
   describe '#calculate_balance' do
     it 'calculates balance after transaction occurs' do
+      value = 1.00
+      balance = 0.00
+      type = 'deposit'
+      subject.add_details(value, balance, type)
       expect(subject.calculate_balance).to eq 1.00
     end
   end
 end
-
-# add transaction to log

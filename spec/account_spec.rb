@@ -3,29 +3,14 @@
 require 'account'
 
 describe Account do
-  # let(:subject) do
-  # #   transaction = class_double('Transaction')
-  # #   expect(transaction).to receive(:new).with(10, 0, 'deposit')
-  #   Account.new(0, transaction)
-  #   # new_transaction = instance_double('transaction')
-  # end
-
   describe '#show_balance' do
-    it 'shows balance as a float' do
-      expect(subject.balance).to be_a(Numeric)
-    end
-
-    it 'shows balance as a float with two decimal places' do
-      expect(subject.show_balance).to eq '0.00'
+    it 'prints integer values as floats with two decimals' do
+      subject.deposit(1)
+      expect(subject.show_balance).to eq '1.00'
     end
   end
 
   describe '#deposit' do
-    it 'accepts values that are integers' do
-      subject.deposit(1)
-      expect(subject.show_balance).to eq '1.00'
-    end
-
     it 'raises an error if the value is not a numeric value' do
       expect { subject.deposit 'one' }.to raise_error 'Must be a number'
     end
@@ -34,21 +19,22 @@ describe Account do
   describe '#withdrawal' do
     before(:each) { subject.deposit(10) }
 
-    it 'raises an error if the value is not a numeric value' do
-      expect { subject.withdrawal 'one' }.to raise_error 'Must be a number'
-    end
-
-    it 'raises an error when withdrawing with a balance less or equal to one' do
-      expect { subject.withdrawal 11.00 }.to raise_error 'Not enough credit'
+    it 'raises error when withdrawing with insufficient balance' do
+      expect { subject.withdrawal 11.00 }.to raise_error 'Insufficient credit'
     end
 
     it 'decreases account\'s balance by the value passsed as argument' do
       expect { subject.withdrawal 1.00 }.to change { subject.balance }.by(-1.00)
     end
+  end
 
-    it 'accepts values that are integers' do
-      subject.withdrawal(1)
-      expect(subject.show_balance).to eq '9.00'
+  describe '#transaction' do
+    it 'creates new transaction instance' do
+      transaction = instance_double('Transaction')
+      expect(transaction).to receive(:add_details).with(1, 0, 'deposit')
+      expect(transaction).to receive(:calculate_balance).and_return(1)
+      subject.transaction(1, 'deposit', transaction)
+      expect(subject.show_balance).to eq '1.00'
     end
   end
 end
