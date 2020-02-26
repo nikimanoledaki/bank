@@ -14,11 +14,29 @@ This simple bank application is written in Ruby with a strict Test-Driven Develo
 
 ## Design
 
-This program has four classes: Account, Transaction, Log, Printer.
+**Structure**
 
-* Methods
-  
-* In terms of tests, the Account unit tests have mocks for the Transaction class, but they lack mocks for the Log and Printer classes. More mocks would be added with time.
+The four classes of this program were created in the following order : Account, Transaction, Log, Printer.
+
+The Account class is the only object that interacts with the other 3 classes. 
+
+Through the Account, the user can make a deposit/withdrawal that is a number, call on methods to create a debit or credit transaction that will change the balance, and print well-formatted transaction histories with the date, transaction value, type of transaction, and balance after the transaction.
+
+New transactions will only happen if they are not edge cases.
+
+The program handles two edge cases: it will raise an error if the input is not numeric and if the user attempts to make a withdrawal with an insufficient balance. The methods can be tested by running a [feature test](#run-feature-tests).
+
+The transaction Log class then tracks these transactions after parsing through the transaction details, which prepares the details to be sent to the printer when the client wishes to see their account statement.
+
+There could be an additional Client object that interacts with the Account to follow the OOD principle of SRP more strictly.
+
+**Tests**
+
+Since the Account object is the main object that it interacts with the other 3 classes, it was important to ensure that it can run independently. The Account unit tests have therefore been decoupled from the other three classes. 
+
+With more time, the tests could be refactored by extracting some code to the RSpec configuration. This way, each unit test could then be under 25 lines, as per Rubocop's suggestion.
+
+Also, the program could also mock time through the Timecop gem.
 
 ## User Stories
 ```
@@ -51,7 +69,7 @@ $ bundle install
 ```
 
 ## How to use
-Invoke IRB and the main file at the same time with the following command:
+In your command line, invoke IRB with the account file and the main file at the same time with the following command:
 ```
 $ irb -r ./lib/account.rb 
 > account = Account.new

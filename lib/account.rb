@@ -12,10 +12,6 @@ class Account
     @log = log
   end
 
-  def statement(printer = Printer.new)
-    printer.statement(@log.show_history)
-  end
-
   def deposit(value)
     transaction(value, 'deposit')
   end
@@ -29,6 +25,10 @@ class Account
     transaction.add_details(value, @balance, type)
     @balance = transaction.calculate_balance
     @log.add(transaction.show_details)
+  end
+
+  def statement(printer = Printer.new)
+    printer.statement(@log.show_history)
   end
 
   private
