@@ -13,7 +13,7 @@ class Printer
   end
 
   def format(log)
-    log.map do |t|
+    log.reverse.map do |t|
       t = if t[:type] == 'deposit'
             "#{t[:date]} || #{number(t[:value])} || || #{number(t[:balance])}"
           else
