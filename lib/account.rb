@@ -24,7 +24,7 @@ class Account
     conditions(value, type)
     transaction.add_details(value, @balance, type)
     @balance = transaction.calculate_balance
-    @log.add(transaction.show_details)
+    @log.import(transaction)
   end
 
   def statement(printer = Printer.new)

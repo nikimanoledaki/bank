@@ -6,7 +6,7 @@ describe Transaction do
   describe '#add_details' do
     it 'adds details of transaction' do
       subject.add_details(1.00, 0.00, 'deposit')
-      expect(subject.show_details).to be_a(Hash)
+      expect(subject.type).to eq 'deposit'
     end
   end
 

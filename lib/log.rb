@@ -9,8 +9,16 @@ class Log
     @history = []
   end
 
-  def add(transaction_details)
-    @history.append(transaction_details)
+  def import(transaction)
+    details = { date: transaction.date, 
+      type: transaction.type, 
+      value: transaction.value, 
+      balance: transaction.calculate_balance }
+    add_transaction(details)
+  end
+
+  def add_transaction(details)
+    @history.append(details)
   end
 
   def show_history

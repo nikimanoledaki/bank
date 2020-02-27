@@ -28,8 +28,4 @@ class Transaction
       @balance -= @value
     end
   end
-
-  def show_details
-    { date: date, type: type, value: @value, balance: calculate_balance }
-  end
 end
